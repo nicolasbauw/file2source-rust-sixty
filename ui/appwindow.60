@@ -1,6 +1,7 @@
 import { Button, LineEdit, CheckBox } from "sixtyfps_widgets.60";
 
 export AppWindow := Window {
+    title: "file2source";
     width: 400px;
     height: 160px;
     callback input-added(string);
