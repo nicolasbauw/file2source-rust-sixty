@@ -1,4 +1,4 @@
-import { Button, VerticalBox, LineEdit } from "sixtyfps_widgets.60";
+import { Button, LineEdit, CheckBox } from "sixtyfps_widgets.60";
 
 export AppWindow := Window {
     width: 400px;
@@ -7,17 +7,22 @@ export AppWindow := Window {
     callback output-added(string);
     
     GridLayout {
+        spacing: 5px;
+        padding-right: 10px;
+        padding-top: 10px;
         Row {
             Text {
                 text: "Input file";
+                vertical-alignment: center;
+                horizontal-alignment: center;
             }
-            in-edit := LineEdit {
+            LineEdit {
                 width: 300px;
                 height: 25px;
                 placeholder-text: "Enter input file name";
                 accepted(text) => {
                     input-added(text);
-                    self.placeholder-text = ""
+                    self.text = ""
                 }
             }
         }
@@ -25,15 +30,58 @@ export AppWindow := Window {
         Row {
             Text {
                 text: "Output file";
+                vertical-alignment: center;
+                horizontal-alignment: center;
             }
-            out-edit := LineEdit {
+            LineEdit {
                 width: 300px;
                 height: 25px;
                 placeholder-text: "Enter output file name";
                 accepted(text) => {
                     output-added(text);
-                    self.placeholder-text = ""
+                    self.text = ""
                 }
+            }
+        }
+
+        Row {
+            Text {
+                text: "Array name";
+                vertical-alignment: center;
+                horizontal-alignment: center;
+            }
+            LineEdit {
+                width: 300px;
+                height: 25px;
+                placeholder-text: "Enter UINT8 array name";
+                accepted(text) => {
+                    input-added(text);
+                    self.text = ""
+                }
+            }
+        }
+
+        
+     }
+
+     GridLayout {
+        spacing: 5px;
+        padding-left: 75px;
+        padding-right: 10px;
+        padding-top: 115px;
+        Row {
+            CheckBox {
+                text: "Amiga";
+            }
+            Button {
+                height: 25px;
+                width: 100px;
+                text: "Quit";
+            }
+            Button {
+                height: 25px;
+                width: 100px;
+                text: "Generate";
             }
         }
      }
