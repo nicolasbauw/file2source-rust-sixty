@@ -1,0 +1,40 @@
+import { Button, VerticalBox, LineEdit } from "sixtyfps_widgets.60";
+
+export AppWindow := Window {
+    width: 400px;
+    height: 160px;
+    callback input-added(string);
+    callback output-added(string);
+    
+    GridLayout {
+        Row {
+            Text {
+                text: "Input file";
+            }
+            in-edit := LineEdit {
+                width: 300px;
+                height: 25px;
+                placeholder-text: "Enter input file name";
+                accepted(text) => {
+                    input-added(text);
+                    self.placeholder-text = ""
+                }
+            }
+        }
+        
+        Row {
+            Text {
+                text: "Output file";
+            }
+            out-edit := LineEdit {
+                width: 300px;
+                height: 25px;
+                placeholder-text: "Enter output file name";
+                accepted(text) => {
+                    output-added(text);
+                    self.placeholder-text = ""
+                }
+            }
+        }
+     }
+}
