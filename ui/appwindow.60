@@ -5,7 +5,8 @@ export AppWindow := Window {
     height: 160px;
     callback input-added(string);
     callback output-added(string);
-    
+    callback quit-clicked;
+
     GridLayout {
         spacing: 5px;
         padding-right: 10px;
@@ -77,6 +78,7 @@ export AppWindow := Window {
                 height: 25px;
                 width: 100px;
                 text: "Quit";
+                clicked => { quit-clicked() }
             }
             Button {
                 height: 25px;
