@@ -4,9 +4,12 @@ export AppWindow := Window {
     title: "file2source";
     width: 400px;
     height: 160px;
+    property <bool> amiga;
     callback input-added(string);
     callback output-added(string);
+    callback array-name(string);
     callback quit-clicked;
+    callback amiga-changed(bool);
 
     GridLayout {
         spacing: 5px;
@@ -57,7 +60,7 @@ export AppWindow := Window {
                 height: 25px;
                 placeholder-text: "Enter UINT8 array name";
                 accepted(text) => {
-                    input-added(text);
+                    array-name(text);
                     self.text = ""
                 }
             }
@@ -74,6 +77,10 @@ export AppWindow := Window {
         Row {
             CheckBox {
                 text: "Amiga";
+                toggled => {
+                    amiga = !amiga;
+                    amiga-changed(amiga);
+                }
             }
             Button {
                 height: 25px;

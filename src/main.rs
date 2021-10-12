@@ -12,6 +12,14 @@ fn main() {
         println!("Output : {}",text.to_string());
     });
 
+    ui.on_array_name(move |text| {
+        println!("Array name : {}",text.to_string());
+    });
+
+    ui.on_amiga_changed(move |amiga| {
+        println!("Amiga mode : {}",amiga);
+    });
+
     ui.on_quit_clicked( || {
         process::exit(0);
     });
